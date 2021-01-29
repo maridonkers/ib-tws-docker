@@ -1,0 +1,7 @@
+Create an Interactive Brokers' [[Trader Workstation platform][Trader Workstation platform]] [[https://www.docker.com/][Docker]] image that displays its GUI on the Docker host computer. This is based on [[https://github.com/alekna/docker-ib-tws][alekna/docker-ib-tws]] Docker image (by [[https://github.com/alekna][Laurynas Alekna]]).
+
+On the Docker host computer, do not forget to use =xhost= to allow access to the X-server, as follows.
+#+BEGIN_SRC sh
+xhost +LOCAL:
+#+END_SRC
+See the Makefile for the commands to build and start the container.
