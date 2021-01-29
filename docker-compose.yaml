@@ -1,0 +1,15 @@
+version: "2.0"
+services:
+  "tws":
+    image: ib-tws
+    build: .
+    stdin_open: true
+    tty: true
+    environment:
+      - TZ=Europe/Amsterdam
+    network_mode: host
+    volumes:
+      - tws:/home/tws:rw
+
+volumes:
+  tws:
