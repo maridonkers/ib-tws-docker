@@ -11,6 +11,9 @@ up:
 down:
 	docker-compose down
 
+ls:
+	docker ps -a
+
 build:
 	xhost +LOCAL:
 	docker-compose up -d --build
