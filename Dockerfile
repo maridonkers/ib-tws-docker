@@ -15,16 +15,23 @@ ENV SHELL /bin/bash
 # Install basic Desktop environment for ibtws.
 RUN apt-get update; \
     apt-get upgrade -y; \
-        apt-get install -y procps sudo curl zip openbox tint2 pcmanfm xfce4-terminal; \
+    apt-get install -y procps sudo curl zip openbox tint2 pcmanfm xfce4-terminal; \
     apt-get clean
 
 # A web browser is required IB TWS to e.g. display help.
+# Configure browser in IB TWS settings to pass --no-sandbox parameter, as follows:
+#   /usr/bin/chromium --no-sandbox
+#
 RUN apt-get update; \
-    apt-get install -y firefox-esr; \
+    apt-get install -y chromium; \
     apt-get clean
 
 # Create a non-root account to run IB TWS with.
-RUN useradd -ms /bin/bash --uid 1000 --gid 100 tws
+RUN useradd -ms /bin/bash --uid 1000 --gid 100 tws; \
+    usermod -G audio,video tws; \
+    mkdir -p /home/tws/Downloads; \
+    mkdir -p /home/tws/Desktop
+
 # RUN echo "tws ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 USER tws
@@ -32,11 +39,10 @@ WORKDIR /home/tws
 ENV HOME /home/tws
 
 # Retrieve and install IB TWS (and its embedded JRE).
-RUN mkdir /home/tws/Desktop; \
-    cd /home/tws ; \
+RUN cd /home/tws ; \
     curl -sO https://download2.interactivebrokers.com/installers/tws/latest/tws-latest-linux-x64.sh; \
     echo "/home/tws/Jts" | sh ./tws-latest-linux-x64.sh; \
-        rm ./tws-latest-linux-x64.sh
+    rm ./tws-latest-linux-x64.sh
 
 # The DISPLAY variable is required to display ibtws on your desktop.
 ENV PS1='$ '
@@ -47,4 +53,5 @@ ENV DISPLAY=":0"
 # access to its X-server via the following command:
 #   xhost +LOCAL:
 #
+# ENTRYPOINT ["/bin/bash"]
 ENTRYPOINT ["Jts/tws"]

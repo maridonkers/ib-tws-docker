@@ -5,6 +5,7 @@ services:
     build: .
     stdin_open: true
     tty: true
+    devices: [ "/dev/snd" ]
     environment:
       - TZ=Europe/Amsterdam
     network_mode: host
