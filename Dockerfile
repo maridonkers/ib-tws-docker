@@ -1,8 +1,10 @@
 # Interactive Brokers' Trader Workstation (TWS) container with GUI
 # displaying on the Docker host's X-server.
 #
-# This is based on alekna/ib-tws Interactive Brokers' Trader Workstation (TWS)
-# docker container, which uses VNC to access the GUI.
+# This is based on alekna/ib-tws Interactive Brokers' Trader
+# Workstation (TWS) docker container, which uses VNC to access the
+# GUI. It is also based on https://tpaschalis.github.io/sandboxed-browser-with-docker
+# for the Chromium sandbox from a container and sound problems (?) fix.
 #
 
 FROM debian:buster
@@ -19,8 +21,6 @@ RUN apt-get update; \
     apt-get clean
 
 # A web browser is required IB TWS to e.g. display help.
-#
-# https://tpaschalis.github.io/sandboxed-browser-with-docker
 #
 # Configure browser in IB TWS settings, as follows:
 #   /usr/bin/chromium

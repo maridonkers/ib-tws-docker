@@ -1,4 +1,4 @@
-Create an Interactive Brokers' [[Trader Workstation platform][Trader Workstation platform]] [[https://www.docker.com/][Docker]] image that uses your computer's native GUI (which is a lot snappier and more robust). This is based on [[https://github.com/alekna/docker-ib-tws][alekna/docker-ib-tws]] Docker image (by [[https://github.com/alekna][Laurynas Alekna]]).
+Create an Interactive Brokers' [[Trader Workstation platform][Trader Workstation platform]] [[https://www.docker.com/][Docker]] image that uses your computer's native GUI (which is a lot snappier and more robust). This is based on [[https://github.com/alekna/docker-ib-tws][alekna/docker-ib-tws]] Docker image (by [[https://github.com/alekna][Laurynas Alekna]]) and on https://tpaschalis.github.io/sandboxed-browser-with-docker for the Chromium sandbox from a container and sound problems (?) fix.
 
 On the Docker host computer, do not forget to use =xhost= to allow access to the X-server, as follows.
 #+BEGIN_SRC sh

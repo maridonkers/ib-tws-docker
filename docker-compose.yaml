@@ -6,13 +6,19 @@ services:
     stdin_open: true
     tty: true
     privileged: true
+    security_opt:
+      - seccomp:"./chrome.json"
+    devices:
+      - "/dev/snd/:/dev/snd/"
+    ipc: host
     environment:
       - TZ=Europe/Amsterdam
     network_mode: host
     volumes:
       - tws:/home/tws:rw
-      - /tmp/.X11-unix/:/tmp/.X11-unix/:ro
-      - ~/.Xauthority:/home/tws/.Xauthority:rw
+      - "/tmp/.X11-unix/:/tmp/.X11-unix/:ro"
+      - "~/.Xauthority:/home/tws/.Xauthority:rw"
+      - "/etc/asound.conf:/etc/asound.conf"
 
 volumes:
   tws:
