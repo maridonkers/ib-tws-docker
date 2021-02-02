@@ -19,11 +19,28 @@ RUN apt-get update; \
     apt-get clean
 
 # A web browser is required IB TWS to e.g. display help.
-# Configure browser in IB TWS settings to pass --no-sandbox parameter, as follows:
-#   /usr/bin/chromium --no-sandbox
+#
+# https://tpaschalis.github.io/sandboxed-browser-with-docker
+#
+# Configure browser in IB TWS settings, as follows:
+#   /usr/bin/chromium
 #
 RUN apt-get update; \
-    apt-get install -y chromium; \
+    apt-get install -y chromium \
+      chromium-l10n \
+      fonts-liberation \
+      fonts-roboto \
+      hicolor-icon-theme \
+      libcanberra-gtk-module \
+      libexif-dev \
+      libgl1-mesa-dri \
+      libgl1-mesa-glx \
+      libpango1.0-0 \
+      libv4l-0 \
+      fonts-symbola \
+      --no-install-recommends; \
+    rm -rf /var/lib/apt/lists/*; \
+    mkdir -p /etc/chromium.d/; \
     apt-get clean
 
 # Create a non-root account to run IB TWS with.

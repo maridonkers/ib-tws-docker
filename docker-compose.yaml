@@ -5,12 +5,14 @@ services:
     build: .
     stdin_open: true
     tty: true
-    devices: [ "/dev/snd" ]
+    privileged: true
     environment:
       - TZ=Europe/Amsterdam
     network_mode: host
     volumes:
       - tws:/home/tws:rw
+      - /tmp/.X11-unix/:/tmp/.X11-unix/:ro
+      - ~/.Xauthority:/home/tws/.Xauthority:rw
 
 volumes:
   tws:
