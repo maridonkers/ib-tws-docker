@@ -45,15 +45,16 @@ RUN apt-get update; \
 
 # Create a non-root account to run IB TWS with.
 RUN useradd -ms /bin/bash --uid 1000 --gid 100 tws; \
-    usermod -G audio,video tws; \
-    mkdir -p /home/tws/Downloads; \
-    mkdir -p /home/tws/Desktop
+    usermod -G audio,video tws; 
 
 # RUN echo "tws ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 USER tws
 WORKDIR /home/tws
 ENV HOME /home/tws
+
+RUN mkdir -p /home/tws/Downloads; \
+    mkdir -p /home/tws/Desktop
 
 # Retrieve and install IB TWS (and its embedded JRE).
 RUN cd /home/tws ; \
@@ -70,5 +71,5 @@ ENV DISPLAY=":0"
 # access to its X-server via the following command:
 #   xhost +LOCAL:
 #
-# ENTRYPOINT ["/bin/bash"]
+#ENTRYPOINT ["/bin/bash"]
 ENTRYPOINT ["Jts/tws"]
