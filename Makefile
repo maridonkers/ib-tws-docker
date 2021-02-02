@@ -23,3 +23,7 @@ build:
 attach:
 	xhost +LOCAL:
 	docker attach ib_tws_1
+
+shell:
+	xhost +LOCAL:
+	docker exec -it ib_tws_1 /bin/bash
