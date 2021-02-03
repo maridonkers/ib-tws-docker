@@ -17,7 +17,7 @@ ENV SHELL /bin/bash
 # Install basic Desktop environment for ibtws.
 RUN apt-get update; \
     apt-get upgrade -y; \
-    apt-get install -y procps sudo curl zip openbox tint2 pcmanfm xfce4-terminal; \
+    apt-get install -y procps sudo curl less vim-nox zip openbox tint2 pcmanfm xfce4-terminal; \
     apt-get clean
 
 # A web browser is required IB TWS to e.g. display help.
