@@ -57,10 +57,11 @@ RUN mkdir -p /home/tws/Downloads; \
     mkdir -p /home/tws/Desktop
 
 # Retrieve and install IB TWS (and its embedded JRE).
+# curl -sO https://download2.interactivebrokers.com/installers/tws/latest/tws-latest-linux-x64.sh; \
 RUN cd /home/tws ; \
-    curl -sO https://download2.interactivebrokers.com/installers/tws/latest/tws-latest-linux-x64.sh; \
-    echo "/home/tws/Jts" | sh ./tws-latest-linux-x64.sh; \
-    rm ./tws-latest-linux-x64.sh
+    curl -sO https://download2.interactivebrokers.com/installers/tws/stable/tws-stable-linux-x64.sh; \
+    echo "/home/tws/Jts" | sh ./tws-stable-linux-x64.sh; \
+    rm ./tws-stable-linux-x64.sh
 
 # The DISPLAY variable is required to display ibtws on your desktop.
 ENV PS1='$ '
