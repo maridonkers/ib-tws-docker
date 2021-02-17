@@ -14,13 +14,14 @@ ENV HOME /root
 ENV TZ Europe/Amsterdam
 ENV SHELL /bin/bash
 
-RUN sed -i "s#\smain\s*\$# main contrib non-free#" /etc/apt/sources.list
 
 # Install basic Desktop environment for ibtws.
 RUN apt-get update; \
     apt-get upgrade -y; \
     apt-get install -y procps sudo curl less vim-nox zip openbox tint2 pcmanfm xfce4-terminal; \
     apt-get clean
+
+RUN sed -i "s#\smain\s*\$# main contrib non-free#" /etc/apt/sources.list
 
 # A web browser is required IB TWS to e.g. display help.
 #
@@ -40,7 +41,6 @@ RUN apt-get update; \
       libpango1.0-0 \
       libv4l-0 \
       fonts-symbola \
-      amixer \
       --no-install-recommends; \
     rm -rf /var/lib/apt/lists/*; \
     mkdir -p /etc/chromium.d/; \
