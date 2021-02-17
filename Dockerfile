@@ -14,6 +14,8 @@ ENV HOME /root
 ENV TZ Europe/Amsterdam
 ENV SHELL /bin/bash
 
+RUN sed -i "s#\smain\s*\$# main contrib non-free#" /etc/apt/sources.list
+
 # Install basic Desktop environment for ibtws.
 RUN apt-get update; \
     apt-get upgrade -y; \
@@ -38,9 +40,7 @@ RUN apt-get update; \
       libpango1.0-0 \
       libv4l-0 \
       fonts-symbola \
-      libglib2.0-0 \
-      libavcodec58 \
-      libavformat58 \
+      amixer \
       --no-install-recommends; \
     rm -rf /var/lib/apt/lists/*; \
     mkdir -p /etc/chromium.d/; \
