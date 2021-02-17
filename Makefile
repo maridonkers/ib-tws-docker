@@ -6,7 +6,8 @@ all: up
 
 up:
 	xhost +LOCAL:
-	docker-compose up -d
+	# docker-compose up -d
+	docker-compose up
 
 down:
 	docker-compose down
@@ -18,7 +19,8 @@ ls:
 build:
 	wget https://raw.githubusercontent.com/jfrazelle/dotfiles/master/etc/docker/seccomp/chrome.json -O ./chrome.json
 	xhost +LOCAL:
-	docker-compose up -d --build
+	# docker-compose up -d --build
+	docker-compose up --build
 
 attach:
 	xhost +LOCAL:

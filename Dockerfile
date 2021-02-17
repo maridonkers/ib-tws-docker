@@ -38,6 +38,9 @@ RUN apt-get update; \
       libpango1.0-0 \
       libv4l-0 \
       fonts-symbola \
+      libglib2.0-0 \
+      libavcodec58 \
+      libavformat58 \
       --no-install-recommends; \
     rm -rf /var/lib/apt/lists/*; \
     mkdir -p /etc/chromium.d/; \
@@ -72,5 +75,5 @@ ENV DISPLAY=":0"
 # access to its X-server via the following command:
 #   xhost +LOCAL:
 #
-#ENTRYPOINT ["/bin/bash"]
+# ENTRYPOINT ["/bin/bash"]
 ENTRYPOINT ["Jts/tws"]
