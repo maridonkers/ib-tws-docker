@@ -57,7 +57,10 @@ WORKDIR /home/tws
 ENV HOME /home/tws
 
 RUN mkdir -p /home/tws/Downloads; \
-    mkdir -p /home/tws/Desktop
+    mkdir -p /home/tws/Desktop; \
+    mkdir -p /home/tws/bin
+
+COPY bin/start.sh /home/tws/bin/
 
 # Retrieve and install IB TWS (and its embedded JRE).
 # curl -sO https://download2.interactivebrokers.com/installers/tws/latest/tws-latest-linux-x64.sh; \
@@ -75,5 +78,6 @@ ENV DISPLAY=":0"
 # access to its X-server via the following command:
 #   xhost +LOCAL:
 #
-# ENTRYPOINT ["/bin/bash"]
-ENTRYPOINT ["Jts/tws"]
+#ENTRYPOINT ["Jts/tws"]
+#ENTRYPOINT ["/bin/bash"]
+# ENTRYPOINT ["/home/tws/bin/start.sh"]
