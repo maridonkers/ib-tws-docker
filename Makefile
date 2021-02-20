@@ -15,10 +15,14 @@ ls:
 	docker ps -a
 
 # Get custom seccomp profile (the wget) for Chromium sound.
-build:
+rebuild:
 	wget https://raw.githubusercontent.com/jfrazelle/dotfiles/master/etc/docker/seccomp/chrome.json -O ./chrome.json
 	xhost +LOCAL:
 	docker-compose build --no-cache
+
+build:
+	xhost +LOCAL:
+	docker-compose build
 
 attach:
 	xhost +LOCAL:

@@ -15,6 +15,7 @@ services:
       - TZ=Europe/Amsterdam
     network_mode: host
     volumes:
+      - "./data:/home/tws/data:rw"
       - "/tmp/.X11-unix/:/tmp/.X11-unix/:ro"
       - "~/.Xauthority:/home/tws/.Xauthority:rw"
       - "/etc/asound.conf:/etc/asound.conf"
