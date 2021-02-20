@@ -76,5 +76,8 @@ ENV DISPLAY=":0"
 # access to its X-server via the following command:
 #   xhost +LOCAL:
 #
-RUN echo "To start IB's TWS, type: Jts/tws" >> /home/tws/.bashrc
+RUN echo "" >> /home/tws/.bashrc ;\
+    echo "echo \"Press Ctrl+C within 5 seconds to abort IB's TWS start...\""  >> /home/tws/.bashrc ;\
+    echo "sleep 5" >> /home/tws/.bashrc ;\
+    echo "Jts/tws" >> /home/tws/.bashrc
 ENTRYPOINT ["/bin/bash"]
