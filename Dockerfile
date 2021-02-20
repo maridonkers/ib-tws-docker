@@ -80,4 +80,4 @@ ENV DISPLAY=":0"
 #
 #ENTRYPOINT ["Jts/tws"]
 #ENTRYPOINT ["/bin/bash"]
-# ENTRYPOINT ["/home/tws/bin/start.sh"]
+ENTRYPOINT ["/home/tws/bin/start.sh"]
