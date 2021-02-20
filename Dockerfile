@@ -52,9 +52,6 @@ RUN useradd -ms /bin/bash --uid 1000 --gid 100 tws; \
 
 # RUN echo "tws ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-COPY bin/start.sh /usr/local/bin/
-RUN chmod a+x /usr/local/bin/start.sh
-
 USER tws
 WORKDIR /home/tws
 ENV HOME /home/tws
@@ -80,6 +77,5 @@ ENV DISPLAY=":0"
 # access to its X-server via the following command:
 #   xhost +LOCAL:
 #
-# ENTRYPOINT ["Jts/tws"]
-# ENTRYPOINT ["/bin/bash"]
-ENTRYPOINT ["/usr/local/bin/start.sh"]
+RUN echo "To start IB TWS type: Jts/tws"
+ENTRYPOINT ["/bin/bash"]
