@@ -52,6 +52,9 @@ RUN useradd -ms /bin/bash --uid 1000 --gid 100 tws; \
 
 # RUN echo "tws ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
+COPY bin/start.sh /usr/local/bin/
+RUN chmod a+x /usr/local/bin/start.sh
+
 USER tws
 WORKDIR /home/tws
 ENV HOME /home/tws
@@ -60,7 +63,6 @@ RUN mkdir -p /home/tws/Downloads; \
     mkdir -p /home/tws/Desktop; \
     mkdir -p /home/tws/bin
 
-COPY bin/start.sh /home/tws/bin/
 
 # Retrieve and install IB TWS (and its embedded JRE).
 # curl -sO https://download2.interactivebrokers.com/installers/tws/latest/tws-latest-linux-x64.sh; \
@@ -69,15 +71,15 @@ RUN cd /home/tws ; \
     echo "/home/tws/Jts" | sh ./tws-stable-linux-x64.sh; \
     rm ./tws-stable-linux-x64.sh
 
-# The DISPLAY variable is required to display ibtws on your desktop.
+# The DISPLAY variable is required to display IB TWS on your desktop.
 ENV PS1='$ '
 ENV DISPLAY=":0"
 
-# Start the installed Interactive Brokers TWS. Its GUI will display on
+# Start the installed Interactive Brokers' TWS. Its GUI will display on
 # the computer that is hosting the Docker container. Be sure to allow
 # access to its X-server via the following command:
 #   xhost +LOCAL:
 #
-#ENTRYPOINT ["Jts/tws"]
-#ENTRYPOINT ["/bin/bash"]
-ENTRYPOINT ["/home/tws/bin/start.sh"]
+# ENTRYPOINT ["Jts/tws"]
+# ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/usr/local/bin/start.sh"]
