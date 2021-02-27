@@ -14,7 +14,7 @@ down:
 ls:
 	docker ps -a
 
-# Get custom seccomp profile (the wget) for Chromium sound.
+# Get custom seccomp profile (the wget) for browser sound.
 rebuild:
 	mkdir -p ./data
 	wget https://raw.githubusercontent.com/jfrazelle/dotfiles/master/etc/docker/seccomp/chrome.json -O ./chrome.json
