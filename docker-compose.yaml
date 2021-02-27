@@ -18,4 +18,6 @@ services:
       - "./data:/home/tws/data:rw"
       - "/tmp/.X11-unix/:/tmp/.X11-unix/:ro"
       - "~/.Xauthority:/home/tws/.Xauthority:rw"
+      - "/var/lib/usbmux:/var/lib/usbmux"
+      - "/var/run/user/1000/pulse:/run/user/1000/pulse"
       - "/etc/asound.conf:/etc/asound.conf"
