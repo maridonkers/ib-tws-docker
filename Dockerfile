@@ -9,7 +9,7 @@
 # It is also based on
 #   https://tpaschalis.github.io/sandboxed-browser-with-docker
 #
-# and for a Chromium sandbox from a container and sound problems (?) fix.
+# and for a browser sandbox from a container and sound problems (?) fix.
 #   https://github.com/TheBiggerGuy/docker-pulseaudio-example
 #
 
@@ -31,11 +31,10 @@ RUN sed -i "s#\smain\s*\$# main contrib non-free#" /etc/apt/sources.list
 # A web browser is required TWS to e.g. display help.
 #
 # Configure browser in TWS settings, as follows:
-#   /usr/bin/chromium
+#   /usr/bin/firefox
 #
 RUN apt-get update; \
-    apt-get install -y chromium \
-      chromium-l10n \
+    apt-get install -y firefox-esr \
       fonts-liberation \
       fonts-roboto \
       hicolor-icon-theme \
@@ -47,14 +46,16 @@ RUN apt-get update; \
       libv4l-0 \
       fonts-symbola \
       pulseaudio-utils \
+      build-essential \
+      libavcodec58 \
+      libavformat58 \
       --no-install-recommends; \
     rm -rf /var/lib/apt/lists/*; \
-    mkdir -p /etc/chromium.d/; \
     apt-get clean
 
 # Create a non-root account to run TWS with.
 RUN useradd -ms /bin/bash --uid 1000 --gid 100 tws; \
-    usermod -G audio,video tws; 
+    usermod -G audio,video tws;
 
 # RUN echo "tws ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
