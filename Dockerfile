@@ -31,12 +31,13 @@ RUN sed -i "s#\smain\s*\$# main contrib non-free#" /etc/apt/sources.list
 # A web browser is required TWS to e.g. display help.
 #
 # Configure browser in TWS settings, as follows:
-#   /usr/bin/firefox
+#   /usr/bin/chromium or /usr/bin/firefox
 #
 RUN apt-get update; \
-    apt-get install -y chromium \
+    apt-get install -y \
+      firefox-esr \
+      chromium \
       chromium-l10n \
-      apt-get install firefox-esr \
       fonts-liberation \
       fonts-roboto \
       hicolor-icon-theme \
@@ -48,7 +49,7 @@ RUN apt-get update; \
       libv4l-0 \
       fonts-symbola \
       pulseaudio-utils \
-      build-essential \
+      libglib2.0-0 \
       libavcodec58 \
       libavformat58 \
       --no-install-recommends; \
@@ -72,8 +73,9 @@ RUN mkdir -p /home/tws/Downloads; \
     mkdir -p /home/tws/Desktop; \
     mkdir -p /home/tws/bin
 
-# Retrieve and install TWS (and its embedded JRE).
-# curl -sO https://download2.interactivebrokers.com/installers/tws/latest/tws-latest-linux-x64.sh; \
+# Retrieve and install TWS (and its embedded JRE). Choose between stable and latest.
+# Stable: https://download2.interactivebrokers.com/installers/tws/stable/tws-stable-linux-x64.sh
+# Latest: https://download2.interactivebrokers.com/installers/tws/latest/tws-latest-linux-x64.sh
 RUN cd /home/tws ; \
     curl -sO https://download2.interactivebrokers.com/installers/tws/stable/tws-stable-linux-x64.sh; \
     echo "/home/tws/Jts" | sh ./tws-stable-linux-x64.sh; \
