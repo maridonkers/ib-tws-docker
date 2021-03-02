@@ -28,10 +28,11 @@ RUN apt-get update; \
 
 RUN sed -i "s#\smain\s*\$# main contrib non-free#" /etc/apt/sources.list
 
-# A web browser is required TWS to e.g. display help.
+# The Chromium web browser must be installed because TWS apparently
+# uses its functionality for e.g. iBot.
 #
 # Configure browser in TWS settings, as follows:
-#   /usr/bin/chromium or /usr/bin/firefox
+#   /usr/bin/firefox or /usr/bin/chromium
 #
 RUN apt-get update; \
     apt-get install -y \
