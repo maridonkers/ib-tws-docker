@@ -34,7 +34,9 @@ RUN sed -i "s#\smain\s*\$# main contrib non-free#" /etc/apt/sources.list
 #   /usr/bin/firefox
 #
 RUN apt-get update; \
-    apt-get install -y firefox-esr \
+    apt-get install -y chromium \
+      chromium-l10n \
+      apt-get install firefox-esr \
       fonts-liberation \
       fonts-roboto \
       hicolor-icon-theme \
