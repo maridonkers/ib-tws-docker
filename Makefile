@@ -17,6 +17,7 @@ ls:
 
 # Get custom seccomp profile (the wget) for browser sound.
 rebuild:
+	mkdir -p ./Jts
 	mkdir -p ./data
 	wget https://raw.githubusercontent.com/jfrazelle/dotfiles/master/etc/docker/seccomp/chrome.json -O ./chrome.json
 	xhost +LOCAL:
