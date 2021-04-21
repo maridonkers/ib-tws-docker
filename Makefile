@@ -9,6 +9,7 @@ up:
 	docker-compose up
 
 down:
+	sync
 	docker-compose down
 
 ls:
