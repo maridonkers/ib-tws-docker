@@ -16,6 +16,7 @@ services:
     network_mode: host
     volumes:
       - "./data:/home/tws/data:rw"
+      - "./.mozilla:/home/tws/.mozilla:rw"
       - "./Jts:/home/tws/Jts:rw"
       - "/tmp/.X11-unix/:/tmp/.X11-unix/:ro"
       - "~/.Xauthority:/home/tws/.Xauthority:rw"
