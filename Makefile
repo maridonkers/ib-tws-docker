@@ -12,6 +12,11 @@ down:
 	sync
 	docker-compose down
 
+# If problems persist after a force-down then manually restart Docker daemon.
+force-down:
+	sync
+	docker rm -f ib_tws_1
+
 ls:
 	docker ps -a
 
